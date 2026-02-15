@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yusuf Dzikri Auliya — My World 🌍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #5D8C3E;
+    --green-light: #7EC850;
+    --brown: #8B6914;
+    --brown-dark: #5C4A1C;
+    --dirt: #96712B;
+    --sky: #87CEEB;
+    --sky-dark: #1a1a2e;
+    --stone: #808080;
+    --white: #f8f8f2;
+    --card-bg: rgba(255,255,255,0.95);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--sky-dark);
+    color: #2d2d2d;
+    overflow-x: hidden;
+  }
+
+  .pixel-font { font-family: 'Press Start 2P', monospace; }
+
+  /* Minecraft-style grass top bar */
+  .grass-bar {
+    height: 8px;
+    background: repeating-linear-gradient(90deg, #5D8C3E 0px, #6B9E47 4px, #4E7A32 8px, #5D8C3E 12px);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #2d5016 0%, #3a6b1e 30%, #4a8525 60%, #5D8C3E 100%);
+    padding: 80px 20px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23ffffff08'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    color: #fff;
+    text-shadow: 3px 3px 0 #2d5016, -1px -1px 0 #2d5016;
+    margin-bottom: 16px;
+    animation: float 3s ease-in-out infinite;
+    line-height: 1.6;
+  }
+
+  .hero .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #d4f0b8;
+    margin-bottom: 24px;
+  }
+
+  .hero .tagline {
+    display: inline-block;
+    background: rgba(0,0,0,0.3);
+    color: #7EC850;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.55rem, 1.5vw, 0.75rem);
+    padding: 10px 20px;
+    border: 2px solid #7EC850;
+    border-radius: 4px;
+    line-height: 1.8;
+  }
+
+  .avatar-emoji {
+    font-size: 80px;
+    display: block;
+    margin-bottom: 20px;
+    animation: bounce 2s ease infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    animation: slideUp 0.6s ease-out both;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+
+  .section-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: var(--green-light);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.6;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-light), transparent);
+    border-radius: 2px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border-left: 4px solid var(--green-light);
+    transition: transform 0.2s;
+  }
+
+  .card:hover { transform: translateY(-2px); }
+
+  .card p { line-height: 1.8; font-size: 1.05rem; }
+
+  /* Interest grid */
+  .interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .interest-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 4px solid var(--green-light);
+  }
+
+  .interest-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  .interest-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+  .interest-card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--brown-dark); }
+  .interest-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
+
+  /* Achievements */
+  .achievement {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+
+  .achievement:hover { transform: translateX(4px); }
+  .achievement .medal { font-size: 36px; flex-shrink: 0; }
+  .achievement h3 { font-size: 1rem; color: var(--brown-dark); }
+  .achievement p { font-size: 0.85rem; color: #666; margin-top: 4px; }
+
+  /* Fun facts */
+  .fun-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .fun-fact {
+    background: linear-gradient(135deg, #2d5016, #3a6b1e);
+    border-radius: 12px;
+    padding: 22px;
+    color: #fff;
+    text-align: center;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    line-height: 1.6;
+  }
+
+  .fun-fact:hover { transform: rotate(-1deg) scale(1.03); }
+  .fun-fact .fact-emoji { font-size: 32px; display: block; margin-bottom: 10px; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    font-size: 0.85rem;
+    border-top: 3px solid #333;
+  }
+
+  footer .pixel-font { font-size: 0.65rem; color: var(--green-light); margin-bottom: 8px; }
+
+  /* Pixel corners decoration */
+  .pixel-corner {
+    width: 12px; height: 12px;
+    background: var(--green-light);
+    display: inline-block;
+    image-rendering: pixelated;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 16px 40px; }
+    .card, .interest-card, .achievement { padding: 18px; }
+    .section { padding: 35px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grass-bar"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="avatar-emoji">⛏️</span>
+  <h1>Yusuf Dzikri Auliya</h1>
+  <p class="subtitle">10 years old · Student · Gamer · Athlete · Foodie</p>
+  <span class="tagline">Welcome to my world! 🌍</span>
+</section>
+
+<div class="grass-bar"></div>
+
+<!-- ABOUT ME -->
+<section class="section">
+  <h2 class="section-title">👋 About Me</h2>
+  <div class="card">
+    <p>
+      Hey there! I'm <strong>Yusuf</strong>, and I'm 10 years old. 
+      I go to <strong>SDIF Al Fikri</strong> where I study hard — especially math and science 🧪. 
+      My daily routine? I do my <strong>math practice + ngaji</strong> first, 
+      then it's gaming time! 🎮
+    </p>
+    <br>
+    <p>
+      I speak <strong>English</strong> with my friends when we play Minecraft together online — 
+      it's actually how I got better at it! When I'm not gaming or studying, 
+      you'll find me reading comics, playing sports, or eating literally everything. 🍕
+    </p>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="section">
+  <h2 class="section-title">🎯 My Interests</h2>
+  <div class="interest-grid">
+    <div class="interest-card">
+      <span class="interest-icon">🎮</span>
+      <h3>Gaming</h3>
+      <p>Minecraft is my #1! Also love Super Smash Bros, Zelda, and everything Nintendo Switch</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">📖</span>
+      <h3>Reading</h3>
+      <p>Komik Haikyu for the volleyball action, Plant vs Zombie for the laughs!</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🏸</span>
+      <h3>Sports</h3>
+      <p>Badminton, soccer with friends, and swimming lessons to level up 🏊</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🗣️</span>
+      <h3>English</h3>
+      <p>I practice English playing Minecraft with friends online — learning while gaming!</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🧮</span>
+      <h3>Math & Science</h3>
+      <p>Competitions are my thing — I love solving hard problems and winning medals!</p>
+    </div>
+    <div class="interest-card">
+      <span class="interest-icon">🍽️</span>
+      <h3>Food</h3>
+      <p>I eat EVERYTHING. Seriously. No picky eating here — all food is good food!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section">
+  <h2 class="section-title">🏆 Achievements</h2>
+  <div class="achievement">
+    <span class="medal">🥇</span>
+    <div>
+      <h3>Math Competition Medals</h3>
+      <p>Won several medals in math competitions — numbers are my superpower!</p>
+    </div>
+  </div>
+  <div class="achievement">
+    <span class="medal">🔬</span>
+    <div>
+      <h3>Science Competitions</h3>
+      <p>Competed and medaled in science — experiments and discoveries are awesome!</p>
+    </div>
+  </div>
+  <div class="achievement">
+    <span class="medal">🌐</span>
+    <div>
+      <h3>English Speaker</h3>
+      <p>Can communicate in English with international Minecraft friends at age 10!</p>
+    </div>
+  </div>
+  <div class="achievement">
+    <span class="medal">📚</span>
+    <div>
+      <h3>Discipline Master</h3>
+      <p>Math practice + ngaji every day before gaming — consistency is key!</p>
+    </div>
+  </div>
+</section>
+
+<!-- FUN FACTS -->
+<section class="section">
+  <h2 class="section-title">⚡ Fun Facts</h2>
+  <div class="fun-facts">
+    <div class="fun-fact">
+      <span class="fact-emoji">⛏️</span>
+      Minecraft is life. I can build anything — houses, castles, redstone machines!
+    </div>
+    <div class="fun-fact">
+      <span class="fact-emoji">🍜</span>
+      I've never met a food I didn't like. Try me!
+    </div>
+    <div class="fun-fact">
+      <span class="fact-emoji">📅</span>
+      Born on April 26, 2015 — a Taurus! ♉
+    </div>
+    <div class="fun-fact">
+      <span class="fact-emoji">🎮</span>
+      Nintendo Switch is my favorite console of all time
+    </div>
+    <div class="fun-fact">
+      <span class="fact-emoji">🏐</span>
+      Haikyu made me appreciate volleyball even though I play badminton!
+    </div>
+    <div class="fun-fact">
+      <span class="fact-emoji">🕌</span>
+      I ngaji every day — it's part of who I am
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="pixel-font">GAME OVER? NEVER! 🎮</p>
+  <p>Made with ❤️ by Yusuf Dzikri Auliya · 2025</p>
+</footer>
+
+</body>
+</html>
