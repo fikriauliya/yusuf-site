@@ -1,0 +1,14 @@
+name = "yusuf-site"
+main = "worker.js"
+compatibility_date = "2026-10-06"
+account_id = "451a2709a83abe2e030fed8262e441ad"
+workers_dev = true
+
+routes = [{ pattern = "yusuf.levifikri.com", custom_domain = true }]
+
+[[kv_namespaces]]
+binding = "SITE"
+id = "62e9d5c9b120424a8fd06fb8e3ac77ce"
+
+# Update the page:
+#   npx wrangler kv key put --namespace-id=62e9d5c9b120424a8fd06fb8e3ac77ce --remote index.html --path=../index.html
