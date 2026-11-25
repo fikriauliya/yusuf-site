@@ -171,9 +171,22 @@
   .adv[hidden] { display: none; }
   .adv .badge { flex-shrink: 0; font-size: 1.6rem; line-height: 1; }
   .adv.gold { box-shadow: inset 0 0 0 2px #f1c40f; }
+  .adv.ruby { box-shadow: inset 0 0 0 2px #e0115f; }
   .adv.silver { box-shadow: inset 0 0 0 2px #bdc3c7; }
   .adv.bronze { box-shadow: inset 0 0 0 2px #cd7f32; }
   .adv.other { box-shadow: inset 0 0 0 2px #1abc9c; }
+  .year { display: flex; flex-direction: column; gap: 10px; }
+  .year + .year { margin-top: 6px; }
+  .year[hidden] { display: none; }
+  .year-head {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+    color: #ffe566;
+    text-shadow: 2px 2px 0 #000;
+    line-height: 1.6;
+    margin: 6px 2px 2px;
+  }
+  .year-grade:not(:empty)::before { content: ' · '; }
   .empty {
     display: none;
     text-align: center;
@@ -247,16 +260,27 @@
         <button type="button" data-filter="language" aria-pressed="false">Language</button>
       </div>
       <div class="list" id="list">
-        <article class="adv gold" data-c="maths"><div class="badge">🥇</div><div>Gold medalist International Kangaroo Mathematics Contest (IKMC) 2026</div></article>
-        <article class="adv gold" data-c="maths"><div class="badge">🥇</div><div>Gold medalist International Kangaroo Mathematics Contest (IKMC) 2025</div></article>
-        <article class="adv silver" data-c="science"><div class="badge">🥈</div><div>Peringkat 2 Olimpiade Sains Nasional (OSN) tingkat Kecamatan Sukmajaya 2026</div></article>
-        <article class="adv bronze" data-c="science"><div class="badge">🥉</div><div>Bronze medalist International Kangaroo Science Contest (IKSC) 2025</div></article>
-        <article class="adv bronze" data-c="language"><div class="badge">🥉</div><div>Bronze medalist International Kangaroo Linguistik Contest (IKLC) 2026</div></article>
-        <article class="adv bronze" data-c="maths"><div class="badge">🥉</div><div>Bronze Award American Mathematics Olympiad (AMO) 2025</div></article>
-        <article class="adv bronze" data-c="science"><div class="badge">🥉</div><div>Medali perunggu Kompetisi Sains Nalaria Realistik (KSNR) 2024</div></article>
-        <article class="adv other" data-c="maths"><div class="badge">🎖️</div><div>Commendable Award Singapore Math Challenge (SMC) 2025</div></article>
-        <article class="adv other" data-c="maths"><div class="badge">🏅</div><div>Predikat Merit Kompetisi Matematika Nalaria Realistik (KMNR) 2025</div></article>
-        <article class="adv other" data-c="language"><div class="badge">🏅</div><div>Honorable mention International Kangaroo Linguistik Contest (IKLC) 2025</div></article>
+        <section class="year" data-year="2026">
+          <h3 class="year-head"><span class="year-num">2026</span><!-- grade: put e.g. Kelas 1 on .year-grade when known --><span class="year-grade" data-grade-for="2026"></span></h3>
+          <article class="adv gold" data-c="maths"><div class="badge">🥇</div><div>Gold medalist International Kangaroo Mathematics Contest (IKMC) 2026</div></article>
+          <article class="adv ruby" data-c="science"><div class="badge">♦️</div><div>Ruby Award Japan International Science &amp; Mathematics Olympiad (JISMO) Science 2026</div></article>
+          <article class="adv silver" data-c="science"><div class="badge">🥈</div><div>Peringkat 2 Olimpiade Sains Nasional (OSN) tingkat Kecamatan Sukmajaya 2026</div></article>
+          <article class="adv bronze" data-c="language"><div class="badge">🥉</div><div>Bronze medalist International Kangaroo Linguistik Contest (IKLC) 2026</div></article>
+          <article class="adv bronze" data-c="maths"><div class="badge">🥉</div><div>Bronze Award American Mathematics Olympiad (AMO) 2026</div></article>
+        </section>
+        <section class="year" data-year="2025">
+          <h3 class="year-head"><span class="year-num">2025</span><!-- grade: put e.g. Kelas 1 on .year-grade when known --><span class="year-grade" data-grade-for="2025"></span></h3>
+          <article class="adv gold" data-c="maths"><div class="badge">🥇</div><div>Gold medalist International Kangaroo Mathematics Contest (IKMC) 2025</div></article>
+          <article class="adv bronze" data-c="science"><div class="badge">🥉</div><div>Bronze medalist International Kangaroo Science Contest (IKSC) 2025</div></article>
+          <article class="adv bronze" data-c="maths"><div class="badge">🥉</div><div>Bronze Award American Mathematics Olympiad (AMO) 2025</div></article>
+          <article class="adv other" data-c="maths"><div class="badge">🎖️</div><div>Commendable Award Singapore Math Challenge (SMC) 2025</div></article>
+          <article class="adv other" data-c="maths"><div class="badge">🏅</div><div>Predikat Merit Kompetisi Matematika Nalaria Realistik (KMNR) 2025</div></article>
+          <article class="adv other" data-c="language"><div class="badge">🏅</div><div>Honorable mention International Kangaroo Linguistik Contest (IKLC) 2025</div></article>
+        </section>
+        <section class="year" data-year="2024">
+          <h3 class="year-head"><span class="year-num">2024</span><!-- grade: put e.g. Kelas 1 on .year-grade when known --><span class="year-grade" data-grade-for="2024"></span></h3>
+          <article class="adv bronze" data-c="science"><div class="badge">🥉</div><div>Medali perunggu Kompetisi Sains Nalaria Realistik (KSNR) 2024</div></article>
+        </section>
       </div>
       <p class="empty" id="empty">No advancements in this category.</p>
     </section>
@@ -265,6 +289,7 @@
   (function () {
     var buttons = document.querySelectorAll('.filters button');
     var items = document.querySelectorAll('#list .adv');
+    var years = document.querySelectorAll('#list .year');
     var empty = document.getElementById('empty');
     buttons.forEach(function (b) {
       b.addEventListener('click', function () {
@@ -275,6 +300,9 @@
           var ok = f === 'all' || el.getAttribute('data-c') === f;
           el.hidden = !ok;
           if (ok) shown++;
+        });
+        years.forEach(function (y) {
+          y.hidden = !y.querySelector('.adv:not([hidden])');
         });
         empty.classList.toggle('show', shown === 0);
       });
